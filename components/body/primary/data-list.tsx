@@ -23,7 +23,7 @@ export default function DataList() {
     return (
         <section className="h-full flex flex-col items-start justify-between">
             {weather?.current?.is_day === 0 ?
-                <Moon size={80} />
+                <Moon size={90} />
                 :
                 <Sun size={90} />
 

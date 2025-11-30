@@ -7,12 +7,13 @@ import Primary from "@/components/body/primary/primary";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import getWeather from "@/components/api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { setWeather } from "@/store/weatherSlice";
 
 export default function Home() {
 
     const dispathc = useDispatch()
+
     const weather = useQuery({
         queryKey: ["getWeather"],
         queryFn: () => getWeather()
@@ -25,8 +26,8 @@ export default function Home() {
     // console.log(weather.data);
 
     return (
-        <main className="w-screen h-screen flex flex-col items-center bg-gray-100 text-black">
-            <Header></Header>
+        <main className="w-screen h-screen flex flex-col items-center bg-[hsl(0,0%,10%)] text-[hsl(0,0%,95%)]">
+            {/* <Header></Header> */}
             <TopBody></TopBody>
             <Primary></Primary>
             <Body></Body>

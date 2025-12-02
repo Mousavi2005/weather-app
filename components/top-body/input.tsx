@@ -16,15 +16,13 @@ export default function Input() {
     async function handleSubmit() {
         if (!place) return;
 
-        const location = await getLatLon(place); // { lat, lon }
-
-        // fetch the new query and cache it
+        const location = await getLatLon(place);
         await queryClient.fetchQuery({
             queryKey: ["getWeather"],
             queryFn: () => getWeather(location)
         });
         dispatch(setCurrentCity(place))
-        setPlace("");
+        // setPlace("");
     }
 
 
@@ -33,18 +31,18 @@ export default function Input() {
             e.preventDefault()
             handleSubmit()
         }}
-            className="w-[40%] h-8 flex gap-4 items-center justify-around" action="">
-            <div className="w-full h-full flex gap-2 items-center bg-[hsl(0,0%,95%)] rounded-full px-2">
-                <Search className="text-[hsl(0,0%,15%)]"></Search>
-                <input value={place}
+            className="h-8 flex gap-4 items-center justify-around" action="">
+            <div className="h-full flex hover:gap-2 items-center bg-[hsl(0,0%,95%)] rounded-full px-1 group">
+                <Search className="text-[hsl(0,0%,15%)]" />
+                <input
+                    value={place}
                     placeholder="Search for a place ..."
-                    className="w-full focus:outline-0 text-[hsl(0,0%,15%)]"
-                    onChange={(e) => {
-                        e.preventDefault()
-                        setPlace(e.target.value)
-                    }} />
+                    className="transition-all duration-300 w-0 group-hover:w-32 group-hover:md:w-56 focus:outline-0 text-[hsl(0,0%,15%)]"
+                    onChange={(e) => setPlace(e.target.value)}
+                />
             </div>
-            <button className="w-24 h-8 bg-teal-600 rounded-[10px]">search</button>
+
+            {/* <button className="w-22 h-8 hidden md:block bg-teal-600 rounded-[10px]">search</button> */}
         </form>
     )
 }

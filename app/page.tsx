@@ -26,7 +26,8 @@ export default function Home() {
     // console.log(weather.data);
 
     return (
-        <main className="w-screen h-screen flex flex-col items-center bg-[hsl(0,0%,10%)] text-[hsl(0,0%,95%)]">
+        <main className="w-screen h-screen flex flex-col items-center justify-between bg-[url('/images/earth.jpg')] bg-cover bg-center bg-no-repeat sm:bg-[hsl(0,0%,10%)] text-[hsl(0,0%,95%)]">
+            
             {/* <Header></Header> */}
             <TopBody></TopBody>
             <Primary></Primary>

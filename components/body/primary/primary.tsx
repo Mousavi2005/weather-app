@@ -6,12 +6,20 @@ export default function Primary() {
     const weather = useSelector((state: RootState) => state.weather.weather)
     const cityName = useSelector((state: RootState) => state.place.currentCity)
     return (
-        <section className="w-[85%] h-[35%] text-gray-100 flex items-center justify-between px-20 py-5 bg-[url('/images/background.jpg')] bg-cover bg-center bg-no-repeat rounded-xl">
-            <div className="w-[20%] h-full flex flex-col items-start justify-between pb-6">
-                <span className=" text-3xl font-semibold">{cityName.toUpperCase()}</span>
-                <span className="text-5xl font-bold">{weather?.current?.temperature_2m}°</span>
-            </div>
-            <DataList></DataList>
-        </section>
+        <>
+            <section className="w-[85%] h-[80%] text-gray-100 hidden sm:flex items-center justify-between px-3 sm:px-6 md:px-8 lg:px-14 xl:px-18 py-5 bg-[hsl(0,0%,10%)]/65 rounded-t-[50px]">
+                <div className="w-[20%] h-full flex flex-col items-start justify-between pb-6">
+                    <span className=" text-3xl font-semibold">{cityName.toUpperCase()}</span>
+                    <span className="text-5xl font-bold">{weather?.current?.temperature_2m}°</span>
+                </div>
+                <DataList></DataList>
+            </section>
+
+            <section className="flex sm:hidden flex-col justify-between w-fit h-28 bg-[hsl(0,0%,10%)]/85 rounded-[25px] py-2 px-4">
+                <span className="text-4xl flex items-center justify-center">{cityName.toUpperCase()}</span>
+                <span className="text-4xl flex items-center justify-center">{weather?.current?.temperature_2m}°</span>
+            </section>
+        </>
+
     )
 }

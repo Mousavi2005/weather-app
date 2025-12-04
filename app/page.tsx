@@ -12,7 +12,7 @@ import { setWeather } from "@/store/weatherSlice";
 
 export default function Home() {
 
-    const dispathc = useDispatch()
+    const dispatch = useDispatch()
 
     const weather = useQuery({
         queryKey: ["getWeather"],
@@ -20,18 +20,18 @@ export default function Home() {
     })
 
     useEffect(() => {
-        dispathc(setWeather(weather.data))
+        dispatch(setWeather(weather.data))
     }, [weather])
 
     // console.log(weather.data);
 
     return (
         <main className="w-screen h-screen flex flex-col items-center justify-between bg-[url('/images/earth.jpg')] bg-cover bg-center bg-no-repeat sm:bg-[hsl(0,0%,10%)] text-[hsl(0,0%,95%)]">
-            
-            {/* <Header></Header> */}
             <TopBody></TopBody>
-            <Primary></Primary>
-            <Body></Body>
+            <div className="w-full max-w-[1500px] h-[90%] flex flex-col items-center justify-end gap-[16%] sm:gap-0">
+                <Primary></Primary>
+                <Body></Body>
+            </div>
         </main>
     );
 }
